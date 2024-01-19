@@ -1,0 +1,16 @@
+<p>collections-home works!</p>
+<app-divider>Add collections table header</app-divider>
+<app-table class="celled stripped" [childData]="data" [childHeaders]="headers"></app-table>
+
+<app-divider>Tab Menu</app-divider>
+
+<app-tabs>
+            <a 
+                class="item" 
+                routerLink="./" 
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}"
+                >Biography</a>
+            <a class="item" routerLink="companies" routerLinkActive="active">Companies</a>
+            <a class="item" routerLink="partners" routerLinkActive="active">Partners</a>
+</app-tabs>

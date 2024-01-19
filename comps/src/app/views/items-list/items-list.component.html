@@ -1,0 +1,16 @@
+<p>items-list works!</p>
+<div class="ui items">
+    <div *ngFor="let chItem of childItems" class="item">
+      <div class="image">
+        <img src="{{chItem.image}}">
+      </div>
+      <div class="content">
+        <div class="header">
+        {{chItem.header}}
+        </div>
+        <div class="description">
+          <p>{{chItem.description}}</p>
+        </div>
+      </div>
+    </div>
+</div>
