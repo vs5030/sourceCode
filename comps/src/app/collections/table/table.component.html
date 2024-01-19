@@ -1,0 +1,14 @@
+<p>table works!</p>
+<table [ngClass]="classnames" class="ui table">
+    <thead>
+        <tr>
+            <th *ngFor="let header of childHeaders">{{header.label}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let record of childData">
+            <td *ngFor="let tdData of childHeaders">{{ record[tdData.key] }} </td>
+        </tr>
+
+    </tbody>
+</table>
