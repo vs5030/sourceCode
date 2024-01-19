@@ -1,0 +1,28 @@
+<nav>
+  <ul class="pagination">
+    <li class="page-item"
+    [appCstmNgClass]="{disabled: currentPage === 0}"
+    appCstmNgClass>
+      <a (click)="currentPage = currentPage - 1" class="page-link">Prev</a>
+    </li>
+    <!--<ng-container *ngFor="let pic of pictures; let i =index;" >-->
+    <ng-container *appCstmNgFor="pictures.length; let i =index;" >
+      <li class="page-item" 
+        [appCstmNgClass]="{active: i === currentPage}"
+        *ngIf="checkWindowIndex(i)">
+        <a (click)="currentPage = i" class="page-link">{{ i + 1 }}</a>
+      </li>
+    </ng-container>
+    <li class="page-item"
+    [appCstmNgClass]="{disabled: currentPage === pictures.length - 1}">
+      <a (click)="currentPage = currentPage+1" class="page-link">Next</a>
+    </li>
+  </ul>
+</nav>
+<div>
+  <h4 [appCstmNgClass]="{'cstmBackgroundColor': true }">{{pictures[currentPage].title}} </h4>
+  <img [src]="pictures[currentPage].url"/>
+</div>
+<ul *appCstmNgFor="5">
+<li> Loser </li>
+</ul>
