@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -6,7 +6,6 @@ import { Component, ElementRef, Renderer2 } from '@angular/core';
   styleUrl: './modal.component.css'
 })
 export class ModalComponent {
-root: any;
 
 constructor(private el: ElementRef){
   //console.log(this.el.nativeElement);
