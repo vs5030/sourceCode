@@ -1,7 +1,7 @@
 <p>modal works!</p>
-<div class="ui dimmer visible active">
+<div (click)="closeModal()" class="ui dimmer visible active">
     <div class="ui modal visible active">
-        <i class="close icon"></i>
+        <i (click)="closeModal()" class="close icon"></i>
         <div class="header">
             Modal
         </div>
@@ -11,7 +11,7 @@
             </p>
         </div>
         <div class="actions">
-            <button class="ui button">OK</button>
+            <button (click)="closeModal()" class="ui button">OK</button>
         </div>
     </div>
 </div>
