@@ -13,8 +13,8 @@ export class ViewsHomeComponent {
   ];
 
   items = [
-    {image: '/assets/images/couch.jpeg', header:'couch', description:'couch pic'},
-    {image: '/assets/images/dresser.jpeg', header:'dresser', description:'dresser pic'}
+    {image: './assets/images/couch.jpeg', header:'couch', description:'couch pic'},
+    {image: './assets/images/dresser.jpeg', header:'dresser', description:'dresser pic'}
 
   ];
 
