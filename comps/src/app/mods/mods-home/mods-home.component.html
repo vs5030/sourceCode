@@ -2,4 +2,17 @@
 <app-divider>Modal component</app-divider>
 
 <button (click)="openModal()">Show Modal</button>
-<app-modal (close)="openModal()" *ngIf="showModal"></app-modal>
+<app-modal (close)="openModal()" *ngIf="showModal">
+    <div modalTitle>
+        custom modal heading
+    </div>
+    <p>
+        Custom resuable modal content. 
+    </p>
+   <ng-container cstmButton>
+        <button (click)="openModal()" class="ui button">
+            custom close modal!
+        </button>
+    </ng-container>
+    
+</app-modal>
