@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './mods-home.component.css'
 })
 export class ModsHomeComponent {
+  showModal = false; 
 
+  openModal(){
+    this.showModal = !this.showModal;
+  }
 }
