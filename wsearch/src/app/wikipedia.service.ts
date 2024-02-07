@@ -19,7 +19,7 @@ export class WikipediaService {
         origin: "*"
       }
      });
-    //return 'here are the search results for loser wiki too late: ' +  searchVal;  
+    //return 'here are the search results for: ' +  searchVal;  
   }
 
 }
