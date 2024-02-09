@@ -1,7 +1,14 @@
+<div class="box">
 <form (submit)="onSubmit($event)">
-<p>search-bar works!</p>
+<!--<p>search-bar works!</p>-->
 <!--<input (input)="onInput($any($event).target.value)" />-->
-<input (input)="term = $any($event).target.value" />
-<!--{{term}}-->
+<input 
+    placeholder="Enter a search term" 
+    class="input" 
+    (input)="term = $any($event).target.value" />
+
+    <!--{{term}}-->
 
 </form>
+
+</div>
