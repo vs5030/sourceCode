@@ -1,20 +1,26 @@
-<p>page-list works!</p>
-number of search results: {{childPages.length}}
+<p>
+    Number of search results: {{childPages.length}}
+</p>
 <hr/>
 
 <table class="table is-striped">
     <thead>
         <tr>
             <th>Title</th>
-            <th>WordCount</th>
+            <th>Word Count</th>
             <th>Snippet</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let page of childPages">
-            <td>{{ page.title }}</td>
+            <td> 
+                <a 
+                    target="_blank"
+                    [href]="'https://en.wikipedia.org?curid=' + page.pageid">{{page.title}}                    
+                </a>
+            </td>
             <td>{{ page.wordcount }}</td>
-            <td>{{ page.snippet }}</td>
+            <td [innerHTML]="page.snippet"></td>
         </tr>            
     </tbody>
 </table>
