@@ -1,0 +1,31 @@
+const { fromEvent } = Rx;
+const { map } = RxOperators;
+
+const cstmInput = document.createElement('input');
+const container = document.querySelector('.container');
+container.appendChild(cstmInput);
+
+const observable = fromEvent(cstmInput,'input')
+	.pipe(map(eventFromObservable => eventFromObservable.target.value),
+        map(valueFromObservableEvent => parseInt(valueFromObservableEvent)),
+        map( value => {
+  				if (isNaN(value)){
+            throw new Error('Please enter a number.');
+  				}
+        	return value;
+       })
+  				
+   )
+    
+observable.subscribe({
+next(value)
+  {
+  	console.log(`your value is: ${value}`);
+  },
+error(err)
+  {
+    console.error('bad entry',err.message);
+  }
+});
+
+observable;

@@ -11,16 +11,14 @@ export class AppComponent {
   constructor (private wikipedia: WikipediaService){}
 
   title = 'wsearch';
-  pages = [];
-  //searchValue = '';
+  pages:{}[] = []; 
   onSearchReceived(val: string){
-    //this.searchValue = val;
     console.log('value received is: ', val);
     //const results = this.wikipedia.search(val);
     //console.log(results);
-    this.wikipedia.search(val).subscribe((response: any) => {
-      console.log(response);
-      this.pages = response.query.search;
+    this.wikipedia.search(val).subscribe((pages:{}[]) => {
+      console.log(pages);
+      this.pages = pages;
   });
   }
   

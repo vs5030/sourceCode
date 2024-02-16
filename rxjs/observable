@@ -1,0 +1,21 @@
+const { Observable } = Rx;
+
+const observable = new Observable( (subscriber) => {
+	subscriber.next(1);
+	subscriber.complete();
+  subscriber.error(new Error('Bad entry.'));
+} );
+
+observable.subscribe({
+	next(value){
+  	console.log('value entered is: ', value);
+  },
+  complete(){
+      console.log('complete. no more events to emit.');
+  },
+  error(err){
+    console.error(err.message);
+  }
+} );
+
+observable;

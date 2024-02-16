@@ -1,0 +1,16 @@
+const { Observable } = Rx; 
+
+const observable = new Observable( (subscriber) => {
+    subscriber.next(1);
+    subscriber.error(new Error('Bad entry.'));
+    subscriber.complete();
+} );
+
+observable.subscribe( 
+    (value) => console.log('value is: ', value), 
+    (err) => console.error('reenter', err.message),
+    () => console.log('complete')
+
+  );
+
+observable;

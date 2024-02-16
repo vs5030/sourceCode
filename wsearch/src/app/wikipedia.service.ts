@@ -1,24 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map, pluck } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+//import { Observable} from 'rxjs';
+//import { map } from 'rxjs/operators';
+
+export interface WikipediaResponse {
+  query: {
+    search: {
+      title: string;
+      snippet: string;
+      pageid: number; 
+    }[];
+  };
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class WikipediaService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  search(searchVal: string){
-    return this.http.get('https://en.wikipedia.org/w/api.php', 
+
+  public search(searchVal: string): Observable<WikipediaResponse>{
+    return this.http
+    .get<WikipediaResponse>('https://en.wikipedia.org/w/api.php', 
      { params: 
       {
-        action: "query",
-        list: "search",
+        action: 'query',
+        list: 'search',
         srsearch: searchVal,
-        utf8: "1",
-        format: "json",
-        origin: "*"
+        utf8: '1',
+        format: 'json',
+        origin: '*'
       }
-     });
+     }).pipe(
+     pluck('query', 'search')
+   //map((res:WikipediaResponse) => res.query.search)
+     );
     //return 'here are the search results for: ' +  searchVal;  
   }
 
