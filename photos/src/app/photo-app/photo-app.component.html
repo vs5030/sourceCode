@@ -1,0 +1,10 @@
+<div>
+    <h3>Random photo generator</h3>
+</div>
+<div>
+    <button (click)="getPhotoFromUnSplash()">Get Photo</button>
+</div>
+<div *ngIf="results">
+    <br/>
+    <img [src]="results"/>
+</div>
