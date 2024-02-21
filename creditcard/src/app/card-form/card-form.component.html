@@ -1,0 +1,20 @@
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+    <app-input [fieldControl]="getControl('name')" cstmLabel="Customer Name"></app-input>
+    <app-input [fieldControl]="getControl('cardNumber')" 
+                cstmLabel="Card Number">
+    </app-input>
+    <app-input [fieldControl]="getControl('expiration')" cstmLabel="Expiration Date"></app-input>
+    <app-input [fieldControl]="getControl('security')" cstmLabel="Security Code"></app-input>
+</form>
+<button (click)="onSubmit()" [disabled]="cardForm.invalid" class="button is-primary">Submit</button>
+<hr />
+
+<div>
+    Form contents: {{cardForm.value | json}}
+</div>
+<div>
+    Form validity: {{cardForm.valid}}
+</div>
+<div>
+    Current errors: {{cardForm.controls.name.errors | json}}
+</div>
