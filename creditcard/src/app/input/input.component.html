@@ -1,0 +1,23 @@
+<div class="field">
+    <label class="label">{{cstmLabel}}</label>
+    <div *ngIf="getControlName(fieldControl)!='cardNumber'" class="control">
+        <input (click)="getControlName(fieldControl)" class="input" [ngClass]="{'is-danger': showErrors()}" [formControl]="fieldControl" />
+    </div>
+    <div *ngIf="getControlName(fieldControl)==='cardNumber'" class="control">
+        <input mask="0000-0000-0000-0000" class="input" [ngClass]="{'is-danger': showErrors()}" [formControl]="fieldControl" />
+    </div>
+    
+    <ng-container *ngIf="fieldControl.errors && showErrors()">
+        <div *ngIf="fieldControl.errors?.['required']">
+            Value is required.
+        </div>
+        <div *ngIf="fieldControl.errors?.['minlength']">
+            Required length is: {{ fieldControl.errors["minlength"].requiredLength }},
+            Actual length is: {{ fieldControl.errors["minlength"].actualLength }}
+        </div>
+        <div *ngIf="fieldControl.errors?.['maxlength']">
+            Required length is: {{ fieldControl.errors["maxlength"].requiredLength }},
+            Actual length is: {{ fieldControl.errors["maxlength"].actualLength }}
+        </div>
+    </ng-container>
+</div>
