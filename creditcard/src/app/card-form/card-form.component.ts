@@ -11,13 +11,14 @@ import { SecurityFormControl } from '../security-form-control';
 export class CardFormComponent {
 
   constructor() {
-    console.log(this.cardForm.get('name'));
+   // console.log(this.cardForm.get('name'));
   }
 
   cardForm = new FormGroup({
     name: new FormControl('', [
       Validators.required,
-      Validators.minLength(3)
+      Validators.minLength(3),
+      Validators.maxLength(20)
     ]
     ),
     cardNumber: new FormControl('', [
@@ -47,7 +48,15 @@ export class CardFormComponent {
     return this.cardForm.get(field) as FormControl;
   }
 
+  getFormGroup(field: string) {
+    return this.cardForm.get(field) as FormGroup;
+  }
+
   onSubmit(){
     console.log('Form has been submitted');
+  }
+
+  onReset(){
+    this.cardForm.reset();
   }
 }

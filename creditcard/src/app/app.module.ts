@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { CardFormComponent } from './card-form/card-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './input/input.component';
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask'
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { CardComponent } from './card/card.component'
 
 
 
@@ -14,7 +15,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask'
   declarations: [
     AppComponent,
     CardFormComponent,
-    InputComponent
+    InputComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
