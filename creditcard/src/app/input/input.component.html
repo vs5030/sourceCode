@@ -12,11 +12,11 @@
             Value is required.
         </div>
         <div *ngIf="fieldControl.errors?.['minlength']">
-            Required length is: {{ fieldControl.errors["minlength"].requiredLength }},
+            Minimum length required is: {{ fieldControl.errors["minlength"].requiredLength }},
             Actual length is: {{ fieldControl.errors["minlength"].actualLength }}
         </div>
         <div *ngIf="fieldControl.errors?.['maxlength']">
-            Required length is: {{ fieldControl.errors["maxlength"].requiredLength }},
+            Maximum length allowed is: {{ fieldControl.errors["maxlength"].requiredLength }},
             Actual length is: {{ fieldControl.errors["maxlength"].actualLength }}
         </div>
     </ng-container>

@@ -1,13 +1,34 @@
-<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
-    <app-input [fieldControl]="getControl('name')" cstmLabel="Customer Name"></app-input>
-    <app-input [fieldControl]="getControl('cardNumber')" 
-                cstmLabel="Card Number">
-    </app-input>
-    <app-input [fieldControl]="getControl('expiration')" cstmLabel="Expiration Date"></app-input>
-    <app-input [fieldControl]="getControl('security')" cstmLabel="Security Code"></app-input>
-</form>
-<button (click)="onSubmit()" [disabled]="cardForm.invalid" class="button is-primary">Submit</button>
-<hr />
+<div class="columns">
+    <div class="column">
+        <app-card [name]="getFormGroup('name').value" [cardNumber]="getFormGroup('cardNumber').value"
+            [expiration]="getFormGroup('expiration').value">
+        </app-card>
+
+    </div>
+    <div class="column">
+        <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+            <app-input [fieldControl]="getControl('name')" cstmLabel="Customer Name"></app-input>
+            <app-input [fieldControl]="getControl('cardNumber')" cstmLabel="Card Number">
+            </app-input>
+            <div class="columns">
+                <div class="column">
+                    <app-input [fieldControl]="getControl('expiration')"
+                        cstmLabel="Expiration Date (MM/YY)"></app-input>
+                </div>
+                <div class="column">
+                    <app-input [fieldControl]="getControl('security')" cstmLabel="Security Code"></app-input>
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="submit" [disabled]="cardForm.invalid" class="button is-primary">Submit</button>
+
+                <button (click)="onReset()" class="button is-warning" type="button">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- <hr />
 
 <div>
     Form contents: {{cardForm.value | json}}
@@ -17,4 +38,4 @@
 </div>
 <div>
     Current errors: {{cardForm.controls.name.errors | json}}
-</div>
+</div> -->
