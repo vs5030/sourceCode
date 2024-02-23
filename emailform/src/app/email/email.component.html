@@ -1,0 +1,31 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" #emailForm="ngForm">
+        <p class="mt-2 title is-4 has-text-centered">Email Form</p>
+        <p class="subtitle is-6 has-text-centered">(using template forms)</p>
+        <div class="field">
+            <label class="label">Enter email</label>
+            <input class="input" type="email" pattern=".+@.+\..+" required name="email" [(ngModel)]="email"
+                #emailControl="ngModel" [ngClass]=" {'is-danger': emailControl.invalid && emailControl.touched}" />
+            <ng-container *ngIf="emailControl.invalid && emailControl.touched">
+                <div class="help is-danger" *ngIf="emailControl.errors && emailControl.errors['required']">
+                    Email is a required field.
+                </div>
+                <div class="help is-danger" *ngIf="emailControl.errors && emailControl.errors['pattern']">
+                    Please enter a valid email.
+                </div>
+            </ng-container>
+        </div>
+        <button class="button is-primary" type="submit" [disabled]="emailControl.invalid">
+            Submit
+        </button>
+    </form>
+</div>
+
+<!-- 
+<div> Is email touched: {{ emailControl.touched }} </div>
+<div> Is email invalid: {{ emailControl.invalid }} </div>
+
+<div> Is form valid: {{ emailForm.valid }} </div>
+<div> Form errors: {{ emailForm.controls['email'].errors | json }} </div>
+<div> Form errors: {{ emailForm.controls['secondEmail'].errors | json }} </div>
+<div> email control values: {{ emailForm.controls['email'].value }} </div> -->
