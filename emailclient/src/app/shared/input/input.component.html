@@ -1,1 +1,27 @@
-<p>input works!</p>
+<div class="field">
+    <label> {{ label }} </label>
+    <input [formControl]="control" />
+    <!-- {{ authForm.get('username')?.errors | json }} -->
+    <div *ngIf="showErrors()" class="ui pointing red basic label">
+        <p *ngIf="control.errors && control.errors['required']">
+            Value is required. 
+        </p>
+        <p *ngIf="control.errors && control.errors['minlength']">
+            The value you entered is {{ control.errors['minlength'].actualLength }} characters long.
+            Value must be at least {{ control.errors['minlength'].requiredLength }} characters.
+        </p>
+        <p *ngIf="control.errors && control.errors['maxlength']">
+            The value you entered is {{ control.errors['maxlength'].actualLength }} characters long.
+            Value must equal to or less than {{ control.errors['maxlength'].requiredLength }} characters.
+        </p>
+        <p *ngIf="control.errors && control.errors['pattern']">
+            Invalid format.
+        </p>
+        <p *ngIf="control.errors && control.errors['nonUniqueUser']">
+            Username already in use.
+        </p>
+        <p *ngIf="control.errors && control.errors['connectionError']">
+            Connection error. Please try again later.
+        </p>
+    </div>
+</div>
