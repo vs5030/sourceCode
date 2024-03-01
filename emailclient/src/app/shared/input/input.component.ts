@@ -9,7 +9,8 @@ import { FormControl } from '@angular/forms';
 export class InputComponent {
 
   @Input() label!: string;
-  @Input() control!: FormControl ;
+  @Input() control!: FormControl;
+  @Input() inputType!: string;
 
   showErrors(){
     const { dirty, touched, errors } = this.control;
