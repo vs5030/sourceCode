@@ -7,7 +7,7 @@ import { AbstractControl, FormGroup, Validator } from "@angular/forms";
 export class MatchPassword implements Validator {
 
     validate(formGroup: AbstractControl) {
-        if (formGroup.get('password')?.value === formGroup.get('confirmPassword')?.value) {
+        if (formGroup.get('password')?.value === formGroup.get('passwordConfirmation')?.value) {
             return null;
         }
         else {

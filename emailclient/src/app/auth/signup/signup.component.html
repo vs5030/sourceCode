@@ -6,13 +6,19 @@
     <app-input inputType="password" label="Password" [control]="authForm.controls.password"></app-input>
 
     <app-input inputType="password" label="Password Confirmation"
-        [control]="authForm.controls.confirmPassword"></app-input>
+        [control]="authForm.controls.passwordConfirmation"></app-input>
 
     <div *ngIf="authForm.controls.password.touched &&
-        authForm.controls.confirmPassword.touched &&
+        authForm.controls.passwordConfirmation.touched &&
         authForm.errors" class="ui red basic label">
         <p *ngIf="authForm.errors['passwordDoesNotMatch']">
             Password and Password Confirmation must match.
+        </p>
+        <p *ngIf="authForm.errors['connectionError']">
+            There is a connection error. Please try again later.
+        </p>
+        <p *ngIf="authForm.errors['requestNotSuccessful']">
+            Unable to complete request. Please try again later.
         </p>
     </div>
     <div>
