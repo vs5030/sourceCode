@@ -4,6 +4,7 @@ import { MatchPassword } from '../validators/match-password';
 import { UniqueUser } from '../validators/unique-user';
 import { AuthService, SignupCredentials } from '../auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -42,9 +43,10 @@ export class SignupComponent {
     console.log('form submitted.');
     this.authService.signupUser(this.authForm.value as SignupCredentials).subscribe(
       {
-        next: value => {
-          console.log('Observable emitted the next value: ' + value.username);
+        next: () => {
+          //console.log('Observable emitted the next value: ' + value.username);
           //this.authForm.set
+          this.router.navigateByUrl('/inbox');
         },
         error: (err) => {
           console.error('Observable emitted an error: ' + JSON.stringify(err) );
@@ -61,7 +63,8 @@ export class SignupComponent {
 
   constructor(private matchPassword: MatchPassword,
     private uniqueUser: UniqueUser,
-    private authService: AuthService){
+    private authService: AuthService,
+    private router: Router){
   }
 
 }

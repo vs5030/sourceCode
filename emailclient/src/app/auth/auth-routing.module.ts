@@ -9,6 +9,9 @@ const routes: Routes = [
     path: '', component: SigninComponent
   },
   {
+    path: 'inbox', component: SigninComponent
+  },
+  {
     path: 'signup', component: SignupComponent
   },
   {

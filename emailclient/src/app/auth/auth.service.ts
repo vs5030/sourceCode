@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, filter, tap } from 'rxjs';
+import { BehaviorSubject, catchError, filter, tap, throwError } from 'rxjs';
 
 
 interface UsernameResponse {
   available: boolean,
   username: string
+}
+
+export interface SigninCredentials {
+  username: string,
+  password: string
 }
 
 export interface SignupCredentials {
@@ -23,7 +28,7 @@ interface SignupResponse {
 })
 export class AuthService {
   rootUrl = 'https://api.angular-email.com';
-  signedin$ = new BehaviorSubject(false);
+  signedin$ = new BehaviorSubject<boolean|null>(null);
 
   constructor(private http: HttpClient) {
   }
@@ -47,6 +52,18 @@ export class AuthService {
       tap(({ authenticated }) => {
         this.signedin$.next(authenticated);
       })
+    );
+  }
+
+  signin(signinCredentials: SigninCredentials){
+    return this.http.post(this.rootUrl + '/auth/signin', signinCredentials).pipe(
+      tap(()=>{
+        this.signedin$.next(true);
+      })
+      // catchError(err => {
+      //   this.signedin$.next(false);
+      //   throw 'error in source. Details: ' + JSON.stringify(err);
+      // })
     );
   }
 
