@@ -14,8 +14,8 @@ export class SignoutComponent {
 
   }
   ngOnInit(){
-    this.authService.signout().subscribe((value)=>{
-      console.log(value);
+    this.authService.signout().subscribe(()=>{
+      //console.log(value);
       console.log('user has signed out');
       this.router.navigateByUrl('/');
     });
