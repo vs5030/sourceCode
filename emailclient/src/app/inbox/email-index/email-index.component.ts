@@ -21,7 +21,7 @@ export class EmailIndexComponent {
 
   ngOnInit(){
    this.emailService.getEmails().subscribe((value)=>{
-    console.log(value);
+    //console.log(value);
     this.emails = value;
   })
   }
