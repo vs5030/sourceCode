@@ -13,14 +13,14 @@ export class EmailShowComponent {
 
   constructor(private route: ActivatedRoute, router: Router) {
     //to ensure emailBody is not undefined, grab value from snapshot
-    this.emailBody = route.snapshot.data['emailBody'];
+    this.emailBody = route.snapshot.data['emailBodyResponse'];
     this.route.data.subscribe(
-      ({ emailBody }) => {
-        if (emailBody.status) {
+      ({ emailBodyResponse }) => {
+        if (emailBodyResponse.status) {
           router.navigateByUrl('/inbox/not-found')
         }
         else {
-          this.emailBody = emailBody;
+          this.emailBody = emailBodyResponse;
         }
       }
     )

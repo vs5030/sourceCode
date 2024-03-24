@@ -20,7 +20,7 @@ const routes: Routes = [
         component: EmailShowComponent
         ,
         resolve: {
-          emailBody: EmailResolverService
+          emailBodyResponse: EmailResolverService
         }
       }
       ,
