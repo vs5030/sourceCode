@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmailBody } from '../email-body';
 
 @Component({
@@ -11,13 +11,17 @@ export class EmailShowComponent {
 
   emailBody!: EmailBody;
 
-  constructor(private route: ActivatedRoute) {
-      //to ensure emailBody is not undefined, grab value from snapshot
-      this.emailBody = route.snapshot.data['emailBody'];
-      this.route.data.subscribe(
-      ({emailBody}) => {
-        //console.log(value);
-        this.emailBody = emailBody;
+  constructor(private route: ActivatedRoute, router: Router) {
+    //to ensure emailBody is not undefined, grab value from snapshot
+    this.emailBody = route.snapshot.data['emailBody'];
+    this.route.data.subscribe(
+      ({ emailBody }) => {
+        if (emailBody.status) {
+          router.navigateByUrl('/inbox/not-found')
+        }
+        else {
+          this.emailBody = emailBody;
+        }
       }
     )
   }
@@ -25,13 +29,15 @@ export class EmailShowComponent {
   ngOnInit() {
     //console.log(this.emailBody);
     // this.route.params.pipe(
-    //   switchMap(({id})=>{
-    //     return this.emailService.getEmailContent(id);
+
+    //   switchMap(({emailBodyId})=>{
+    //     //console.log(this.route.params);
+    //     return this.emailService.getEmailContent(emailBodyId);
     //   })
-    // ).subscribe((emailBody)=>{
+    // ).subscribe((emailBody: EmailBody)=>{
     //   this.emailBody = emailBody;
+    //   //console.log(this.emailBody)
     // })
 
   }
 }
-

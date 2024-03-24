@@ -6,3 +6,8 @@ export interface EmailBody {
     from: string;
     html: string;
 }
+
+// export interface EmailError {
+//     status: string;
+//     statusText: string;
+// }
