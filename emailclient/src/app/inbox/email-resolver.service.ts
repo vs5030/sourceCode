@@ -1,18 +1,25 @@
-import { Injectable, inject } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, ResolveFn, Router, RouterStateSnapshot } from '@angular/router';
+import { inject } from '@angular/core';
+import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
 import { EmailBody } from './email-body';
 import { EmailService } from './email.service';
-import { switchMap, pipe } from 'rxjs';
+import { catchError, of } from 'rxjs';
 
 // @Injectable({
-//   providedIn: 'root'
+//    providedIn: 'root'
 // })
 export const EmailResolverService: ResolveFn<EmailBody> = (
 
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-
+  route: ActivatedRouteSnapshot
+  //state: RouterStateSnapshot
 ) => {
-  //console.log(route.params['emailBodyId']);
-  return inject(EmailService).getEmailContent(route.params['emailBodyId']);
+
+  const { emailBodyId } = route.params;
+  return inject(EmailService).getEmailContent(emailBodyId)
+    .pipe(
+      catchError((err) => {
+        return of(err);
+      })
+    )
+    ;
+
 }

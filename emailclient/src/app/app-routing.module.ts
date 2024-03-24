@@ -7,11 +7,12 @@ const routes: Routes = [
     path: 'inbox',
     canMatch: [authGuard],
     loadChildren: () => import('./inbox/inbox.module').then(m => m.InboxModule)
-  },
-  {
-    path: 'inbox',
-    redirectTo: '/'
   }
+  //,
+  // {
+  //   path: 'inbox',
+  //   redirectTo: '/'
+  // }
 ];
 
 @NgModule({

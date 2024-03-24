@@ -8,12 +8,12 @@ export const authGuard: CanMatchFn = (route, segments) => {
   return inject(AuthService).signedin$.pipe(
     skipWhile(value => value===null),
     map(value => value!),
-    take(1)
-    // tap((value)=>{
-    //   if (!value){
-    //     router.navigateByUrl('/');
-    //   }
-    // })
+    take(1),
+    tap((value)=>{
+      if (!value){
+        router.navigateByUrl('/');
+      }
+    })
   );
 
 };
