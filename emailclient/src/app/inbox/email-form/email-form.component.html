@@ -1,0 +1,17 @@
+<form class="ui form" [formGroup]="emailForm">
+
+    <!-- <input [formControl]="emailForm.controls['to'].value" /> -->
+   <!-- <label>From: </label> {{ emailForm.controls['from'].value }} -->
+   <!-- <label>To: </label> {{ emailForm.controls['to'].value }}
+   <label>Subject: </label> -->
+
+   <app-input label="From: " [control]="getFormControl('from')" inputType="email" ></app-input>
+
+   <app-input label="To: " [control]="getFormControl('to')" inputType="email" ></app-input>
+
+   <app-input label="Subject: " [control]="getFormControl('subject')" inputType="text" ></app-input>
+
+   <app-input label="Content: " [control]="getFormControl('text')" inputType="text" ></app-input>
+
+</form>
+
